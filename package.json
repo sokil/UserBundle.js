@@ -1,5 +1,5 @@
 {
-  "name": "user-bundle",
+  "name": "sokil.user-bundle",
   "version": "0.0.1",
   "description": "user bundle",
   "main": "Gruntfile.js",
