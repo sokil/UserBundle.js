@@ -49,6 +49,15 @@ var RoleGroup = Backbone.Model.extend({}),
     UserAttributeSchema = Backbone.Model.extend({ urlRoot: "/users/attributes/schema", parse: function parse(a, b) {
     return a.schema;
   } }),
+    ModelFetchDefaultsTrait = { __defaultsFetched: !1, fetchDefaults: function fetchDefaults(a) {
+    var b = this;return a = a || {}, this.defaults && !this.__defaultsFetched ? $.Deferred().resolveWith(this, this.defaults).promise().done(function () {
+      this.trigger("syncDefaults", this, this.defaults, a);
+    }) : $.get(this.urlRoot + "/new", a.data || {}, function (c) {
+      b.defaults = b.parse(c, {}), b.attributes = _.defaults({}, b.attributes, b.defaults), b.trigger("syncDefaults", b, c, a), b.__defaultsFetched = !0;
+    });
+  }, fetch: function fetch(a) {
+    return this.isNew() ? this.fetchDefaults(a) : Backbone.Model.prototype.fetch.call(this, a);
+  } },
     UserRouter = Marionette.AppRouter.extend({ routes: { users: "usersAction", "users/new": "editUserAction", "users/:id/edit": "editUserAction", "users/:id": "userAction", roleGroups: "roleGroupsAction", usersAttributes: "usersAttributesAction" }, usersAction: function usersAction() {
     app.rootView.content.show(new UsersPageView());
   }, editUserAction: function editUserAction(a) {

@@ -58,13 +58,10 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'build/views.js': [
-                        // models
                         "src/models/**/*.js",
-                        // components
+                        "src/traits/*.js",
                         "src/app/**/*.js",
-                        // components
                         "src/components/**/*.js",
-                        // third party libraries
                         'node_modules/key-translate/src/Translate.js',
                         'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js'
                     ]

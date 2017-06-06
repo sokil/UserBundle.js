@@ -1,6 +1,6 @@
 {
   "name": "sokil.user-bundle",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "user bundle",
   "main": "dist/user.js",
   "author": "Dmytro Sokil <dmytro.sokil@gmail.com>",
