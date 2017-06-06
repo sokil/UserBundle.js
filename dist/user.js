@@ -2,7 +2,7 @@
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
     define(["jquery"], function (a0) {
-      return (root['UserRouter,UserServiceDefinition'] = factory(a0));
+      return (root['UserRouter'] = factory(a0));
     });
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
@@ -10,7 +10,7 @@
     // like Node.
     module.exports = factory(require("jquery"));
   } else {
-    root['UserRouter,UserServiceDefinition'] = factory(root["jQuery"]);
+    root['UserRouter'] = factory(root["jQuery"]);
   }
 }(this, function ($) {
 
@@ -699,6 +699,6 @@ var RoleGroup = Backbone.Model.extend({}),
     };
   }, { "../lib/dom": 3, "../lib/helper": 6, "./instances": 18, "./update-geometry": 19, "./update-scroll": 20 }] }, {}, [1]);
 
-return UserRouter,UserServiceDefinition;
+return UserRouter;
 
 }));
