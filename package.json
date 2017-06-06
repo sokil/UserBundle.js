@@ -1,8 +1,8 @@
 {
   "name": "sokil.user-bundle",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "user bundle",
-  "main": "Gruntfile.js",
+  "main": "dist/user.js",
   "author": "Dmytro Sokil <dmytro.sokil@gmail.com>",
   "license": "MIT",
   "dependencies": {},
