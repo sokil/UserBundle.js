@@ -109,7 +109,7 @@ module.exports = function (grunt) {
                 views: {
                     src: 'build/views.babel.js',
                     dest: 'dist/user.js',
-                    objectToExport: ['UserRouter', 'UserServiceDefinition'],
+                    objectToExport: 'UserRouter',
                     deps: {
                         default: ['$'],
                         amd: ['jquery'],
