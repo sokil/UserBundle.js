@@ -1,18 +1,18 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
-    define(["jquery"], function (a0) {
-      return (root['UserRouter'] = factory(a0));
+    define(["jquery","backbone.marionette"], function (a0,b1) {
+      return (root['UserRouter'] = factory(a0,b1));
     });
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require("jquery"));
+    module.exports = factory(require("jquery"),require("backbone.marionette"));
   } else {
-    root['UserRouter'] = factory(root["jQuery"]);
+    root['UserRouter'] = factory(root["jQuery"],root["Marionette"]);
   }
-}(this, function ($) {
+}(this, function ($, Marionette) {
 
 "use strict";
 

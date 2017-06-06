@@ -108,10 +108,10 @@ module.exports = function (grunt) {
                     dest: 'dist/user.js',
                     objectToExport: 'UserRouter',
                     deps: {
-                        default: ['$'],
-                        amd: ['jquery'],
-                        cjs: ['jquery'],
-                        global: ['jQuery']
+                        default: ['$', 'Marionette'],
+                        amd: ['jquery', {'backbone.marionette': 'Marionette'}],
+                        cjs: ['jquery', {'backbone.marionette': 'Marionette'}],
+                        global: ['jQuery', 'Marionette']
                     }
                 },
                 themes: {
