@@ -1,6 +1,8 @@
 UserBundle Frontend
 ===================
 
+[![npm](https://img.shields.io/npm/v/sokil.user-bundle.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/sokil.user-bundle)
+
 ## Single page application
 
 SPA is optional. If you require to have frontent for user management, you need to add dependency to [sokil/frontend-bundle](https://github.com/sokil/FrontendBundle). This bundle automate creating SPA by starting configured backbone app. Follow related manuals to start using it.
