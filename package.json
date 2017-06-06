@@ -1,6 +1,6 @@
 {
   "name": "sokil.user-bundle",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "user bundle",
   "main": "Gruntfile.js",
   "author": "Dmytro Sokil <dmytro.sokil@gmail.com>",
@@ -19,6 +19,7 @@
     "grunt-newer": "1.1.0",
     "grunt-umd": "^2.4.0",
     "jade": "1.*",
+    "key-translate": "^1.0.1",
     "perfect-scrollbar": "0.6.14"
   }
 }

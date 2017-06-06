@@ -1,174 +1,24 @@
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module unless amdModuleId is set
+    define(["jquery"], function (a0) {
+      return (root['UserRouter,UserServiceDefinition'] = factory(a0));
+    });
+  } else if (typeof module === 'object' && module.exports) {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory(require("jquery"));
+  } else {
+    root['UserRouter,UserServiceDefinition'] = factory(root["jQuery"]);
+  }
+}(this, function ($) {
+
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e, f, g) {
-    c.push('<form><div class="form-group"><label>' + jade.escape(null == (b = f("Group name")) ? "" : b) + '</label><input type="text" name="name"' + jade.attr("value", d.get("name"), !0, !1) + ' class="form-control"/></div><div class="form-group"><label>' + jade.escape(null == (b = f("Roles")) ? "" : b) + '</label><div class="list"><table class="table table-striped table-hover"><col width="40px"/><tbody>'), function () {
-      var f = e;if ("number" == typeof f.length) for (var g = 0, h = f.length; g < h; g++) {
-        f[g];c.push("<tr>");var i = a.contains(d.get("roles"), g);c.push('<td><input type="checkbox" name="roles[]"' + jade.attr("value", g, !0, !1) + jade.attr("checked", i, !0, !1) + "/></td><td>" + jade.escape(null == (b = g) ? "" : b) + "</td></tr>");
-      } else {
-        var h = 0;for (var g in f) {
-          h++;f[g];c.push("<tr>");var i = a.contains(d.get("roles"), g);c.push('<td><input type="checkbox" name="roles[]"' + jade.attr("value", g, !0, !1) + jade.attr("checked", i, !0, !1) + "/></td><td>" + jade.escape(null == (b = g) ? "" : b) + "</td></tr>");
-        }
-      }
-    }.call(this), c.push("</tbody></table></div></div></form>");
-  }.call(this, "_" in d ? d._ : "undefined" != typeof _ ? _ : void 0, "group" in d ? d.group : "undefined" != typeof group ? group : void 0, "roles" in d ? d.roles : "undefined" != typeof roles ? roles : void 0, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0), c.join("");
-}, undefined.JST.RoleGroupsList = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e) {
-    c.push('<table class="table table-striped table-hover top-space"><tr><th>' + jade.escape(null == (b = d("Group")) ? "" : b) + '</th><th class="hidden-xs">' + jade.escape(null == (b = d("Roles")) ? "" : b) + "</th><th></th></tr>"), function () {
-      var e = a;if ("number" == typeof e.length) for (var f = 0, g = e.length; f < g; f++) {
-        var h = e[f];c.push("<tr" + jade.attr("data-group", h.get("id"), !0, !1) + "><td>" + jade.escape(null == (b = h.get("name")) ? "" : b) + '</td><td class="hidden-xs">' + jade.escape(null == (b = h.get("roles").join(", ")) ? "" : b) + '</td><td><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="glyphicon glyphicon-cog"></span>&nbsp<span class="caret"></span></button><ul class="dropdown-menu dropdown-menu-right"><li><a' + jade.attr("data-id", h.get("id"), !0, !1) + ' class="edit">' + jade.escape(null == (b = d("Edit")) ? "" : b) + "</a></li><li><a" + jade.attr("data-id", h.get("id"), !0, !1) + ' class="delete">' + jade.escape(null == (b = d("Delete")) ? "" : b) + "</a></li></ul></div></td></tr>");
-      } else {
-        var g = 0;for (var f in e) {
-          g++;var h = e[f];c.push("<tr" + jade.attr("data-group", h.get("id"), !0, !1) + "><td>" + jade.escape(null == (b = h.get("name")) ? "" : b) + '</td><td class="hidden-xs">' + jade.escape(null == (b = h.get("roles").join(", ")) ? "" : b) + '</td><td><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="glyphicon glyphicon-cog"></span>&nbsp<span class="caret"></span></button><ul class="dropdown-menu dropdown-menu-right"><li><a' + jade.attr("data-id", h.get("id"), !0, !1) + ' class="edit">' + jade.escape(null == (b = d("Edit")) ? "" : b) + "</a></li><li><a" + jade.attr("data-id", h.get("id"), !0, !1) + ' class="delete">' + jade.escape(null == (b = d("Delete")) ? "" : b) + "</a></li></ul></div></td></tr>");
-        }
-      }
-    }.call(this), c.push("</table>");
-  }.call(this, "groups" in d ? d.groups : "undefined" != typeof groups ? groups : void 0, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0), c.join("");
-}, undefined.JST.RoleGroupsPage = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a) {
-    c.push('<div class="btn-toolbar top-space"><a data-new-group="data-new-group" class="btn btn-success">' + jade.escape(null == (b = a("New group")) ? "" : b) + '</a></div><div class="block top-space"><div class="title">' + jade.escape(null == (b = a("Groups")) ? "" : b) + '</div><div class="content no-border list"></div></div>');
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0), c.join("");
-}, undefined.JST.User = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e) {
-    c.push('<div class="block top-space"><div class="title row"><div class="col-md-6 col-sm-6 col-xs-6">' + jade.escape(null == (b = a("User") + " #" + e.get("id")) ? "" : b) + '</div><div class="col-md-6 col-sm-6 col-xs-6 text-right">'), e.hasPermission("edit") && c.push('<div class="visible-xs"><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="glyphicon glyphicon-cog"></span>&nbsp<span class="caret"></span></button><ul class="dropdown-menu dropdown-menu-right"><li><a' + jade.attr("href", "/#users/" + e.get("id") + "/edit", !0, !1) + ">" + jade.escape(null == (b = a("Edit")) ? "" : b) + '</a></li><li><a class="delete">' + jade.escape(null == (b = a("Delete")) ? "" : b) + '</a></li></ul></div></div><div class="hidden-xs"><a' + jade.attr("href", "/#users/" + e.get("id") + "/edit", !0, !1) + ' class="btn btn-success btn-xs">' + jade.escape(null == (b = a("Edit")) ? "" : b) + '</a>&nbsp;<a class="btn btn-danger btn-xs delete">' + jade.escape(null == (b = a("Delete")) ? "" : b) + "</a></div>"), c.push('</div></div><div class="content"><div class="row"><div class="col-md-3"><img' + jade.attr("src", e.getGravatarUrl(200), !0, !1) + ' class="img-circle"/></div><div class="col-md-9"><h1>' + jade.escape(null == (b = e.get("name")) ? "" : b) + '</h1><dl class="dl-horizontal"><dt>' + jade.escape(null == (b = a("E-mail")) ? "" : b) + "</dt><dd><a" + jade.attr("href", e.get("email"), !0, !1) + ">" + jade.escape(null == (b = e.get("email")) ? "" : b) + "</a></dd>"), e.has("attributes") && function () {
-      var a = e.get("attributes");if ("number" == typeof a.length) for (var d = 0, f = a.length; d < f; d++) {
-        var g = a[d];g.value.view && (c.push("<dt>" + jade.escape(null == (b = g.label) ? "" : b) + "</dt>"), "string" === g.type ? c.push("<dd>" + (null == (b = g.value.view) ? "" : b) + "</dd>") : "entity" === g.type && c.push("<dd>" + (null == (b = g.value.view) ? "" : b) + "</dd>"));
-      } else {
-        var f = 0;for (var d in a) {
-          f++;var g = a[d];g.value.view && (c.push("<dt>" + jade.escape(null == (b = g.label) ? "" : b) + "</dt>"), "string" === g.type ? c.push("<dd>" + (null == (b = g.value.view) ? "" : b) + "</dd>") : "entity" === g.type && c.push("<dd>" + (null == (b = g.value.view) ? "" : b) + "</dd>"));
-        }
-      }
-    }.call(this), c.push("</dl></div></div></div></div>");
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0, "user" in d ? d.user : "undefined" != typeof user ? user : void 0), c.join("");
-}, undefined.JST.UserAttributeEditorPopup = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e, f) {
-    c.push("<form>"), function () {
-      var f = d;if ("number" == typeof f.length) for (var g = 0, h = f.length; g < h; g++) {
-        var i = f[g];c.push('<div class="form-group"><label>' + jade.escape(null == (b = e("user_attribute_editor_popup.field." + g)) ? "" : b) + "</label><input" + jade.attr("type", i.type, !0, !1) + jade.attr("name", g, !0, !1) + jade.attr("value", a[g], !0, !1) + ' class="form-control"/></div>');
-      } else {
-        var h = 0;for (var g in f) {
-          h++;var i = f[g];c.push('<div class="form-group"><label>' + jade.escape(null == (b = e("user_attribute_editor_popup.field." + g)) ? "" : b) + "</label><input" + jade.attr("type", i.type, !0, !1) + jade.attr("name", g, !0, !1) + jade.attr("value", a[g], !0, !1) + ' class="form-control"/></div>');
-        }
-      }
-    }.call(this), c.push("</form>");
-  }.call(this, "attribute" in d ? d.attribute : "undefined" != typeof attribute ? attribute : void 0, "schema" in d ? d.schema : "undefined" != typeof schema ? schema : void 0, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0), c.join("");
-}, undefined.JST.UserAttributesPage = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e) {
-    c.push('<div class="btn-toolbar top-space"><div class="btn-group"><a dropdown-toggle="dropdown-toggle" data-toggle="dropdown" class="btn btn-success dropdown-toggle">' + jade.escape(null == (b = d("user_attributes_page.button.new_attribute") + " ") ? "" : b) + '<span class="caret"></span></a><ul class="dropdown-menu">'), function () {
-      var d = a;if ("number" == typeof d.length) for (var e = 0, f = d.length; e < f; e++) {
-        var g = d[e];c.push('<li><a href="#"' + jade.attr("data-new-attribute", e, !0, !1) + ">" + jade.escape(null == (b = g.label) ? "" : b) + "</a></li>");
-      } else {
-        var f = 0;for (var e in d) {
-          f++;var g = d[e];c.push('<li><a href="#"' + jade.attr("data-new-attribute", e, !0, !1) + ">" + jade.escape(null == (b = g.label) ? "" : b) + "</a></li>");
-        }
-      }
-    }.call(this), c.push('</ul></div></div><div class="block top-space"><div class="title">' + jade.escape(null == (b = d("user_attributes_page.title")) ? "" : b) + '</div><div class="content no-border list"></div></div>');
-  }.call(this, "availableTypes" in d ? d.availableTypes : "undefined" != typeof availableTypes ? availableTypes : void 0, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0), c.join("");
-}, undefined.JST.UserEditor = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d) {
-    c.push('<div class="block top-space"><div class="title">' + jade.escape(null == (b = d.get("name") || a("New user")) ? "" : b) + '</div><div class="content"></div></div>');
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "user" in d ? d.user : "undefined" != typeof user ? user : void 0), c.join("");
-}, undefined.JST.UserGroups = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e, f) {
-    c.push('<form><table class="table table-striped table-hover top-space"><col width="40px"/><tr><th></th><th>' + jade.escape(null == (b = d("Group")) ? "" : b) + '</th><th class="hidden-xs">' + jade.escape(null == (b = d("Roles")) ? "" : b) + "</th></tr>"), function () {
-      var d = a;if ("number" == typeof d.length) for (var e = 0, g = d.length; e < g; e++) {
-        var h = d[e];c.push('<tr><td><input type="checkbox" name="groups[]"' + jade.attr("value", h.id, !0, !1) + jade.attr("checked", f.inGroup(h.id), !0, !1) + "/></td><td>" + jade.escape(null == (b = h.name) ? "" : b) + '</td><td class="hidden-xs">' + jade.escape(null == (b = h.roles.join(", ")) ? "" : b) + "</td></tr>");
-      } else {
-        var g = 0;for (var e in d) {
-          g++;var h = d[e];c.push('<tr><td><input type="checkbox" name="groups[]"' + jade.attr("value", h.id, !0, !1) + jade.attr("checked", f.inGroup(h.id), !0, !1) + "/></td><td>" + jade.escape(null == (b = h.name) ? "" : b) + '</td><td class="hidden-xs">' + jade.escape(null == (b = h.roles.join(", ")) ? "" : b) + "</td></tr>");
-        }
-      }
-    }.call(this), c.push('</table><div class="form-group"><input type="submit" value="Save" class="btn btn-success"/><span class="status"></span></div></form>');
-  }.call(this, "groups" in d ? d.groups : "undefined" != typeof groups ? groups : void 0, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0, "user" in d ? d.user : "undefined" != typeof user ? user : void 0), c.join("");
-}, undefined.JST.UserGroupsEmptyList = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a) {
-    c.push('<div class="block__empty top-space bottom-space">' + jade.escape(null == (b = a("user.groups.empty_list")) ? "" : b) + "</div>");
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0), c.join("");
-}, undefined.JST.UserList = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e) {
-    c.push('<table class="table table-striped table-hover"><col width="60"/><tbody>'), function () {
-      var d = e;if ("number" == typeof d.length) for (var f = 0, g = d.length; f < g; f++) {
-        var h = d[f];c.push("<tr" + jade.attr("data-user-id", h.get("id"), !0, !1) + "><td><a" + jade.attr("href", "/#users/" + h.get("id"), !0, !1) + "><img" + jade.attr("src", h.getGravatarUrl(40), !0, !1) + ' class="img-circle"/></a></td><td>' + jade.escape(null == (b = h.get("name")) ? "" : b) + "</td><td><a" + jade.attr("href", "mailto://" + h.get("email"), !0, !1) + ' target="_blank">' + jade.escape(null == (b = h.get("email")) ? "" : b) + '</a></td><td class="text-right">'), h.hasPermission("edit") && c.push('<div class="visible-xs"><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="glyphicon glyphicon-cog"></span>&nbsp<span class="caret"></span></button><ul class="dropdown-menu dropdown-menu-right"><li><a' + jade.attr("href", "/#users/" + h.get("id") + "/edit", !0, !1) + ">" + jade.escape(null == (b = a("user.edit")) ? "" : b) + "</a></li><li><a>" + jade.escape(null == (b = a("user.list.delete")) ? "" : b) + '</a></li></ul></div></div><div class="hidden-xs"><a' + jade.attr("href", "/#users/" + h.get("id") + "/edit", !0, !1) + ' class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span>&nbsp;' + jade.escape(null == (b = a("user.list.edit")) ? "" : b) + '</a>&nbsp;<a class="btn btn-default btn-xs delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;' + jade.escape(null == (b = a("user.list.delete")) ? "" : b) + "</a></div>"), c.push("</td></tr>");
-      } else {
-        var g = 0;for (var f in d) {
-          g++;var h = d[f];c.push("<tr" + jade.attr("data-user-id", h.get("id"), !0, !1) + "><td><a" + jade.attr("href", "/#users/" + h.get("id"), !0, !1) + "><img" + jade.attr("src", h.getGravatarUrl(40), !0, !1) + ' class="img-circle"/></a></td><td>' + jade.escape(null == (b = h.get("name")) ? "" : b) + "</td><td><a" + jade.attr("href", "mailto://" + h.get("email"), !0, !1) + ' target="_blank">' + jade.escape(null == (b = h.get("email")) ? "" : b) + '</a></td><td class="text-right">'), h.hasPermission("edit") && c.push('<div class="visible-xs"><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle"><span class="glyphicon glyphicon-cog"></span>&nbsp<span class="caret"></span></button><ul class="dropdown-menu dropdown-menu-right"><li><a' + jade.attr("href", "/#users/" + h.get("id") + "/edit", !0, !1) + ">" + jade.escape(null == (b = a("user.edit")) ? "" : b) + "</a></li><li><a>" + jade.escape(null == (b = a("user.list.delete")) ? "" : b) + '</a></li></ul></div></div><div class="hidden-xs"><a' + jade.attr("href", "/#users/" + h.get("id") + "/edit", !0, !1) + ' class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span>&nbsp;' + jade.escape(null == (b = a("user.list.edit")) ? "" : b) + '</a>&nbsp;<a class="btn btn-default btn-xs delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;' + jade.escape(null == (b = a("user.list.delete")) ? "" : b) + "</a></div>"), c.push("</td></tr>");
-        }
-      }
-    }.call(this), c.push('</tbody></table><div class="pagination-wrap"></div>');
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0, "users" in d ? d.users : "undefined" != typeof users ? users : void 0), c.join("");
-}, undefined.JST.UserParameters = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e) {
-    c.push('<form class="top-space"><div class="form-group"><label>' + jade.escape(null == (b = a("Email")) ? "" : b) + '</label><input type="text" name="email"' + jade.attr("value", e.get("email"), !0, !1) + ' autocomplete="off" class="form-control"/></div><div class="form-group"><label>' + jade.escape(null == (b = a("Password")) ? "" : b) + '</label><input type="password" name="password" value="" autocomplete="off" class="form-control"/></div><div class="form-group"><label>' + jade.escape(null == (b = a("Name")) ? "" : b) + '</label><input type="text" name="name"' + jade.attr("value", e.get("name"), !0, !1) + ' class="form-control"/></div>'), e.has("attributes") && function () {
-      var d = e.get("attributes");if ("number" == typeof d.length) for (var f = 0, g = d.length; f < g; f++) {
-        var h = d[f];h.permissions.edit === !0 && (c.push('<div class="form-group"><label>' + jade.escape(null == (b = h.label) ? "" : b) + "</label>"), "string" === h.type ? c.push('<input type="text"' + jade.attr("name", "attributeValues[" + f + "]", !0, !1) + jade.attr("value", h.value.edit, !0, !1) + ' class="form-control"/>') : "entity" === h.type && (c.push("<select" + jade.attr("name", "attributeValues[" + f + "]", !0, !1) + ' class="form-control"><option value="">' + jade.escape(null == (b = a("Not selected")) ? "" : b) + "</option>"), function () {
-          var a = h.options;if ("number" == typeof a.length) for (var d = 0, e = a.length; d < e; d++) {
-            var f = a[d];c.push("<option" + jade.attr("value", f.value, !0, !1) + jade.attr("selected", f.value === h.value.edit, !0, !1) + ">" + jade.escape(null == (b = f.text) ? "" : b) + "</option>");
-          } else {
-            var e = 0;for (var d in a) {
-              e++;var f = a[d];c.push("<option" + jade.attr("value", f.value, !0, !1) + jade.attr("selected", f.value === h.value.edit, !0, !1) + ">" + jade.escape(null == (b = f.text) ? "" : b) + "</option>");
-            }
-          }
-        }.call(this), c.push("</select>")), c.push("</div>"));
-      } else {
-        var g = 0;for (var f in d) {
-          g++;var h = d[f];h.permissions.edit === !0 && (c.push('<div class="form-group"><label>' + jade.escape(null == (b = h.label) ? "" : b) + "</label>"), "string" === h.type ? c.push('<input type="text"' + jade.attr("name", "attributeValues[" + f + "]", !0, !1) + jade.attr("value", h.value.edit, !0, !1) + ' class="form-control"/>') : "entity" === h.type && (c.push("<select" + jade.attr("name", "attributeValues[" + f + "]", !0, !1) + ' class="form-control"><option value="">' + jade.escape(null == (b = a("Not selected")) ? "" : b) + "</option>"), function () {
-            var a = h.options;if ("number" == typeof a.length) for (var d = 0, e = a.length; d < e; d++) {
-              var f = a[d];c.push("<option" + jade.attr("value", f.value, !0, !1) + jade.attr("selected", f.value === h.value.edit, !0, !1) + ">" + jade.escape(null == (b = f.text) ? "" : b) + "</option>");
-            } else {
-              var e = 0;for (var d in a) {
-                e++;var f = a[d];c.push("<option" + jade.attr("value", f.value, !0, !1) + jade.attr("selected", f.value === h.value.edit, !0, !1) + ">" + jade.escape(null == (b = f.text) ? "" : b) + "</option>");
-              }
-            }
-          }.call(this), c.push("</select>")), c.push("</div>"));
-        }
-      }
-    }.call(this), c.push('<div class="form-group"><input type="submit"' + jade.attr("value", a("Save"), !0, !1) + ' class="btn btn-success"/><span class="status"></span></div></form>');
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0, "user" in d ? d.user : "undefined" != typeof user ? user : void 0), c.join("");
-}, undefined.JST.UserRoles = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a, d, e, f) {
-    c.push('<form><table class="table table-striped table-hover top-space"><col width="40px"/><tr><th></th><th>' + jade.escape(null == (b = d("Role")) ? "" : b) + '</th><th class="hidden-xs">' + jade.escape(null == (b = d("Child roles")) ? "" : b) + "</th></tr>"), function () {
-      var e = a;if ("number" == typeof e.length) for (var g = 0, h = e.length; g < h; g++) {
-        var i = e[g];c.push("<tr>");var j = !!f.get("ownRoles") && f.get("ownRoles").indexOf(g) !== -1;c.push('<td><input type="checkbox" name="roles[]"' + jade.attr("value", g, !0, !1) + jade.attr("checked", j, !0, !1) + "/></td><td>" + jade.escape(null == (b = g) ? "" : b) + '</td><td class="hidden-xs">' + jade.escape(null == (b = i.length ? i.join(", ") : d("No child roles")) ? "" : b) + "</td></tr>");
-      } else {
-        var h = 0;for (var g in e) {
-          h++;var i = e[g];c.push("<tr>");var j = !!f.get("ownRoles") && f.get("ownRoles").indexOf(g) !== -1;c.push('<td><input type="checkbox" name="roles[]"' + jade.attr("value", g, !0, !1) + jade.attr("checked", j, !0, !1) + "/></td><td>" + jade.escape(null == (b = g) ? "" : b) + '</td><td class="hidden-xs">' + jade.escape(null == (b = i.length ? i.join(", ") : d("No child roles")) ? "" : b) + "</td></tr>");
-        }
-      }
-    }.call(this), c.push('</table><div class="form-group"><input type="submit" value="Save" class="btn btn-success"/><span class="status"></span></div></form>');
-  }.call(this, "roles" in d ? d.roles : "undefined" != typeof roles ? roles : void 0, "t" in d ? d.t : "undefined" != typeof t ? t : void 0, "undefined" in d ? d.undefined : void 0, "user" in d ? d.user : "undefined" != typeof user ? user : void 0), c.join("");
-}, undefined.JST.UsersPage = function (a) {
-  var b,
-      c = [],
-      d = a || {};return function (a) {
-    c.push('<div class="btn-toolbar top-space"><a href="/#users/new" class="btn btn-success">' + jade.escape(null == (b = a("Add user")) ? "" : b) + '</a></div><div class="block top-space"><div class="title">' + jade.escape(null == (b = a("Users")) ? "" : b) + '</div><div id="users-list" class="content no-border"></div></div>');
-  }.call(this, "t" in d ? d.t : "undefined" != typeof t ? t : void 0), c.join("");
-}, i18n.addMessages({ "user_attribute_editor_popup.title": "Аттрибут пользователя", "user_attribute_editor_popup.button.save": "Сохранить", "user_attribute_editor_popup.field.name": "Название", "user_attribute_editor_popup.field.description": "Описание", "user_attribute_editor_popup.field.type": "Тип", "user_attribute_editor_popup.field.printFormat": "Формат вывода", "user_attribute_editor_popup.field.defaultValue": "Значение по умолчанию" }), i18n.addMessages({ "user_attributes_page.button.new_attribute": "Новый аттрибут", "user_attributes_page.title": "Аттрибут пользователя" }), i18n.addMessages({ "New user": "Новый пользователь", Parameters: "Параметры", Roles: "Роли", Groups: "Группы", Email: "Электронная почта", Password: "Пароль", "Password confirm": "Подтвердить пароль", Save: "Сохранить" }), i18n.addMessages({ "user.groups.empty_list": "Группы отсутствуют" }), i18n.addMessages({ "user.list.edit": "Изменить", "user.list.delete": "Удалить", "user.list.name_not_specified": "Имя не задано" }), i18n.addMessages({ "user_attribute_list.name": "Название", "user_attribute_list.description": "Описание", "user_attribute_list.type": "Тип", "user_attribute_list.printFormat": "Формат вывода", "user_attribute_list.defaultValue": "Значение по умолчанию" }), i18n.addMessages({ "Add user": "Новый пользователь", Users: "Пользователи" });var RoleGroup = Backbone.Model.extend({}),
+var RoleGroup = Backbone.Model.extend({}),
     RoleGroupCollection = Backbone.Collection.extend({ model: RoleGroup, url: "/roles/groups", parse: function parse(a) {
     return a.groups;
   } }),
@@ -286,7 +136,8 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
     return [{ class: "btn-primary", title: app.t("user_attribute_editor_popup.button.save"), attributes: { "data-save": !0 } }];
   }, save: function save() {
     var a = UrlMutator.unserializeQuery(this.$("form").serialize());this.model.save(a, { parse: !1 });
-  } });i18n.addMessages({ "user_attribute_editor_popup.title": "User attribute", "user_attribute_editor_popup.button.save": "Save", "user_attribute_editor_popup.field.name": "Name", "user_attribute_editor_popup.field.description": "Description", "user_attribute_editor_popup.field.type": "Type", "user_attribute_editor_popup.field.printFormat": "Print format", "user_attribute_editor_popup.field.defaultValue": "Default value" }), i18n.addMessages({ "user_attribute_editor_popup.title": "Атрибут користувача", "user_attribute_editor_popup.button.save": "Зберегти", "user_attribute_editor_popup.field.name": "Назва", "user_attribute_editor_popup.field.description": "Опис", "user_attribute_editor_popup.field.type": "Тип", "user_attribute_editor_popup.field.printFormat": "Формат виводу", "user_attribute_editor_popup.field.defaultValue": "Значення на замовчуванням" });var UserAttributesPageView = Marionette.LayoutView.extend({ collection: null, regions: { list: ".list" }, events: { "click [data-new-attribute]": "newAttributeClickListener" }, initialize: function initialize() {
+  } }),
+    UserAttributesPageView = Marionette.LayoutView.extend({ collection: null, regions: { list: ".list" }, events: { "click [data-new-attribute]": "newAttributeClickListener" }, initialize: function initialize() {
     this.collection = app.container.get("userAttributeCollection"), this.listenToOnce(this.collection, "sync", this.renderPage), this.collection.fetch();
   }, render: function render() {}, renderPage: function renderPage() {
     this.$el.html(app.render("UserAttributesPage", { availableTypes: this.collection.availableTypes })), this.renderList(), this.listenTo(this.collection, "update", this.renderList);
@@ -297,7 +148,8 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
         c = b.data("new-attribute");app.popup(new UserAttributeEditorPopupView({ attributeType: c, onSave: function (a) {
         this.collection.add(a);
       }.bind(this) }));
-  } });i18n.addMessages({ "user_attributes_page.button.new_attribute": "New attribute", "user_attributes_page.title": "User attribute" }), i18n.addMessages({ "user_attributes_page.button.new_attribute": "Новий атрибут", "user_attributes_page.title": "Атрибут користувача" });var UserEditorView = Marionette.LayoutView.extend({ regions: { content: ".content" }, initialize: function initialize() {
+  } }),
+    UserEditorView = Marionette.LayoutView.extend({ regions: { content: ".content" }, initialize: function initialize() {
     this.listenTo(this.model, "syncDefaults", function () {
       this.content.show(new UserParametersView({ model: this.model }));
     }), this.listenTo(this.model, "sync", function () {
@@ -305,7 +157,8 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
     }), this.model.fetch();
   }, render: function render() {
     this.$el.html(app.render("UserEditor", { user: this.model }));
-  } });i18n.addMessages({ "New user": "Новий користувач", Parameters: "Параметри", Roles: "Ролі", Groups: "Групи", Email: "Електронна пошта", Password: "Пароль", "Password confirm": "Підтвердити пароль", Save: "Зберегти" });var UserGroupsView = Backbone.View.extend({ events: { "submit form": "saveUserGroups" }, groups: null, initialize: function initialize() {
+  } }),
+    UserGroupsView = Backbone.View.extend({ events: { "submit form": "saveUserGroups" }, groups: null, initialize: function initialize() {
     var a = this;app.container.get("roleGroupsPromise").done(function (b) {
       a.groups = b.groups, a.renderAsync();
     });
@@ -316,7 +169,8 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
         b = UrlMutator.unserializeQuery(this.$el.find("form").serialize());return b._token = app.csrf, b.groups || (b.groups = []), this.$el.find(".status").addClass("spinner-small"), this.model.save(null, { attrs: b }).always(function () {
       a.$el.find(".status").removeClass("spinner-small");
     }).done(function (a) {}), !1;
-  } });i18n.addMessages({ "user.groups.empty_list": "No groups configured" }), i18n.addMessages({ "user.groups.empty_list": "Не створено жодної групи" });var UserListView = Backbone.View.extend({ events: { "click .delete": "deleteEventListener" }, initialize: function initialize(a) {
+  } }),
+    UserListView = Backbone.View.extend({ events: { "click .delete": "deleteEventListener" }, initialize: function initialize(a) {
     this.listenTo(this.collection, "sync", this.renderAsync), this.collection.setLimit(20).setPage(1).fetchPage().fail(function (a, b) {
       app.router.navigate("", { trigger: !0 });
     });
@@ -333,7 +187,8 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
     }).fail(function (a) {
       var b = a.responseJSON;alert(b.message);
     });
-  } });i18n.addMessages({ "user.list.edit": "Edit", "user.list.delete": "Delete", "user.list.name_not_specified": "User name not specified" }), i18n.addMessages({ "user.list.edit": "Змінити", "user.list.delete": "Видалити", "user.list.name_not_specified": "Ім'я не задано" });var UserParametersView = Backbone.View.extend({ events: { "submit form": "saveParametersEventHandler" }, render: function render() {
+  } }),
+    UserParametersView = Backbone.View.extend({ events: { "submit form": "saveParametersEventHandler" }, render: function render() {
     this.$el.html(app.render("UserParameters", { user: this.model }));
   }, saveParametersEventHandler: function saveParametersEventHandler(a) {
     var b = this,
@@ -369,9 +224,30 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
     return [{ name: "edit", class: "btn btn-default btn-xs", icon: "glyphicon glyphicon-pencil", caption: app.t("user_attribute_list.edit"), click: function click(a, b, c) {
         app.popup(new UserAttributeEditorPopupView({ model: c.collection.get(b) }));
       } }];
-  } });i18n.addMessages({ "user_attribute_list.name": "Name", "user_attribute_list.description": "Description", "user_attribute_list.type": "Type", "user_attribute_list.printFormat": "Print Format", "user_attribute_list.defaultValue": "Default Value", "user_attribute_list.edit": "Edit" }), i18n.addMessages({ "user_attribute_list.name": "Назва", "user_attribute_list.description": "Опис", "user_attribute_list.type": "Тип", "user_attribute_list.printFormat": "Формат виводу", "user_attribute_list.defaultValue": "Значення на замовчуванням" });var UsersPageView = Marionette.LayoutView.extend({ regions: { list: "#users-list" }, render: function render() {
+  } }),
+    UsersPageView = Marionette.LayoutView.extend({ regions: { list: "#users-list" }, render: function render() {
     this.$el.html(app.render("UsersPage")), this.list.show(new UserListView({ collection: new UserCollection() }));
-  } });i18n.addMessages({}), i18n.addMessages({ "Add user": "Новий користувач", Users: "Користувачі" }), !function a(b, c, d) {
+  } });!function (a, b) {
+  "function" == typeof define && define.amd ? define("Translate", function () {
+    return a.Translate = b();
+  }) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = b() : a.Translate = b();
+}(undefined, function () {
+  var a = function a(_a) {
+    this.messages = _a || {};
+  };return a.prototype = { messages: {}, reset: function reset() {
+      return this.messages = {}, this;
+    }, setMessage: function setMessage(a, b) {
+      return this.messages[a] = b, this;
+    }, addMessages: function addMessages(a) {
+      for (var b in a) {
+        this.messages[b] = a[b];
+      }return this;
+    }, getMessage: function getMessage(a, b) {
+      var c = this.messages[a] || a;if (b) for (var d in b) {
+        c = c.replace(new RegExp("{" + d + "}", "g"), b[d]);
+      }return c;
+    } }, a;
+}), !function a(b, c, d) {
   function e(g, h) {
     if (!c[g]) {
       if (!b[g]) {
@@ -822,3 +698,7 @@ undefined.JST = undefined.JST || {}, undefined.JST.RoleGroupEditorPopup = functi
       var b = f.get(a);b && (b.negativeScrollAdjustment = b.isNegativeScroll ? a.scrollWidth - a.clientWidth : 0, e.css(b.scrollbarXRail, "display", "block"), e.css(b.scrollbarYRail, "display", "block"), b.railXMarginWidth = d.toInt(e.css(b.scrollbarXRail, "marginLeft")) + d.toInt(e.css(b.scrollbarXRail, "marginRight")), b.railYMarginHeight = d.toInt(e.css(b.scrollbarYRail, "marginTop")) + d.toInt(e.css(b.scrollbarYRail, "marginBottom")), e.css(b.scrollbarXRail, "display", "none"), e.css(b.scrollbarYRail, "display", "none"), g(a), h(a, "top", a.scrollTop), h(a, "left", a.scrollLeft), e.css(b.scrollbarXRail, "display", ""), e.css(b.scrollbarYRail, "display", ""));
     };
   }, { "../lib/dom": 3, "../lib/helper": 6, "./instances": 18, "./update-geometry": 19, "./update-scroll": 20 }] }, {}, [1]);
+
+return UserRouter,UserServiceDefinition;
+
+}));
