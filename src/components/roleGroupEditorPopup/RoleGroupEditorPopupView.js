@@ -37,22 +37,15 @@ var RoleGroupEditorPopupView = PopupView.extend({
             roles: this.roles
         });
 
-        //init scroll
-        app.loadCss([
-            '/bundles/user/css/perfect-scrollbar.css'
-        ]);
-
-        require(['user/js/perfect-scrollbar'], function() {
-            // show body
-            self.setBody(html);
-            // add scroll
-            self.$el.find('.list')
-                .css({
-                    height: '300px',
-                    position: 'relative'
-                })
-                .perfectScrollbar();
-        })
+        // show body
+        self.setBody(html);
+        // add scroll
+        self.$el.find('.list')
+            .css({
+                height: '300px',
+                position: 'relative',
+                overflow: 'scroll'
+            });
     },
     
     saveRoleGroupEventHandler: function() {

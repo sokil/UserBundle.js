@@ -62,9 +62,13 @@ module.exports = function (grunt) {
                         "src/traits/*.js",
                         "src/app/**/*.js",
                         "src/components/**/*.js",
-                        'node_modules/key-translate/src/Translate.js',
-                        'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js'
+                        'node_modules/key-translate/src/Translate.js'
                     ]
+                },
+                options: {
+                    compress: env === 'prod',
+                    beautify: env !== 'prod',
+                    mangle: env !== 'prod'
                 }
             },
             l10n: {
@@ -91,16 +95,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        cssmin: {
-            dist: {
-                files: {
-                    'dist/user.min.css': [
-                        // third party libraries
-                        'node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css'
-                    ]
-                }
-            }
-        },
         umd: _.extend(
             {
                 views: {
@@ -108,10 +102,26 @@ module.exports = function (grunt) {
                     dest: 'dist/user.js',
                     objectToExport: 'UserRouter',
                     deps: {
-                        default: ['$', 'Marionette'],
-                        amd: ['jquery', {'backbone.marionette': 'Marionette'}],
-                        cjs: ['jquery', {'backbone.marionette': 'Marionette'}],
-                        global: ['jQuery', 'Marionette']
+                        default: [
+                            '$',
+                            'Backbone',
+                            'Marionette'
+                        ],
+                        amd: [
+                            'jquery',
+                            {'backbone': 'Backbone'},
+                            {'backbone.marionette': 'Marionette'}
+                        ],
+                        cjs: [
+                            'jquery',
+                            {'backbone': 'Backbone'},
+                            {'backbone.marionette': 'Marionette'}
+                        ],
+                        global: [
+                            'jQuery',
+                            'Backbone',
+                            'Marionette'
+                        ]
                     }
                 },
                 themes: {
@@ -150,7 +160,6 @@ module.exports = function (grunt) {
         'jade',
         'uglify',
         'babel',
-        'cssmin',
         'umd',
         'clean'
     ]);

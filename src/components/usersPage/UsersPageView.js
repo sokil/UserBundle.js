@@ -1,4 +1,4 @@
-var UsersPageView = Marionette.LayoutView.extend({
+var UsersPageView = Marionette.View.extend({
     
     regions: {
         list: '#users-list'

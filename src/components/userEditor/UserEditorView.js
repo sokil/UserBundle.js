@@ -1,4 +1,4 @@
-var UserEditorView = Marionette.LayoutView.extend({
+var UserEditorView = Marionette.View.extend({
 
     regions: {
         content: '.content'

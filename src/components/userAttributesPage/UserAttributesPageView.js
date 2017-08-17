@@ -1,4 +1,4 @@
-var UserAttributesPageView = Marionette.LayoutView.extend({
+var UserAttributesPageView = Marionette.View.extend({
     collection: null,
 
     regions: {

@@ -1,4 +1,4 @@
-var RoleGroupsPageView = Marionette.LayoutView.extend({
+var RoleGroupsPageView = Marionette.View.extend({
 
     regions: {
         'list': '.list'

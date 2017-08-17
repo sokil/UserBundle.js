@@ -1,0 +1,27 @@
+table.table.table-hover.table-striped
+  if showColumnHeader
+    tr
+      if checkType
+        th
+      each column in columns
+        th= column.caption
+      if buttons
+        th
+  each item in collection
+    tr(data-item=item.id)
+      if checkType
+        td
+          input(type=checkType, name=checkName + "[]", checked=item.checked, value=item.id)
+      each column in columns
+        td= item[column.name]
+      if buttons
+        each button in buttons
+          td.text-right
+            - var attributes = {class: button.class}
+            if (button.name)
+              - attributes["data-"+button.name]=item.id
+            a&attributes(attributes)
+              if button.icon
+                span(class=button.icon)
+                = " "
+              = button.caption
